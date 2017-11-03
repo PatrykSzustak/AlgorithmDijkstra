@@ -3,14 +3,14 @@ package algorithmDijkstra;
 public class Edge {
 
     private Vertex[] vertices = new Vertex[2];
-    private final float value;
+    private final float length;
 
 
-    public Edge(Vertex first, Vertex second, float value) {
+    public Edge(Vertex first, Vertex second, float length) {
         if(first == second){
             throw new IllegalArgumentException("Edge must link different vertices");
         }
-        this.value = value;
+        this.length = length;
         this.vertices[0] = first;
         this.vertices[1]= second;
     }
@@ -32,7 +32,7 @@ public class Edge {
         return vertices;
     }
 
-    public float getValue() {
-        return value;
+    public float getLength() {
+        return length;
     }
 }

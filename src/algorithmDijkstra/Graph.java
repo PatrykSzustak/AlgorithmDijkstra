@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Graph {
 
-public final List<Vertex> graph;
+private final List<Vertex> graph;
 
     public Graph(List<Vertex> graph){
 

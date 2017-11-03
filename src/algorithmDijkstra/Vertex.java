@@ -3,11 +3,12 @@ package algorithmDijkstra;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vertex {
+public class Vertex implements Comparable<Vertex> {
 
 
     private final String cityName;
     private final List<Edge> edges = new ArrayList<>();
+    private float calculatedDistance;
 
     public Vertex(String cityName) {
         this.cityName = cityName;
@@ -29,4 +30,18 @@ public void link (Vertex other, float value){
                 "cityName='" + cityName + '\'' +
                 '}';
     }
+
+    public float getCalculatedDistance() {
+        return calculatedDistance;
+    }
+
+    public void setCalculatedDistance(float calculatedDistance) {
+        this.calculatedDistance = calculatedDistance;
+    }
+
+    @Override
+    public int compareTo(Vertex o) {
+        return Float.compare(calculatedDistance, o.calculatedDistance);
+    }
+
 }

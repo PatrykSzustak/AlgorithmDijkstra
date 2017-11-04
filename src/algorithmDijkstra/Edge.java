@@ -22,7 +22,7 @@ public class Edge {
         }else if(oneVertex == vertices[1]){
             return vertices[0];
         } else {
-            throw  new IllegalArgumentException("Złe miasto");
+            throw new IllegalArgumentException("Złe miasto");
         }
     }
 

@@ -27,6 +27,7 @@ public class DijkstraAlgorithm {
 
         while(!priorityQueue.isEmpty()){
             priorityQueue.remove();
+
         }
 
 

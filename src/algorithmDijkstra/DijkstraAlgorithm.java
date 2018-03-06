@@ -8,33 +8,35 @@ import java.util.Set;
 
 public class DijkstraAlgorithm {
 
+ public Optional<Float> calculate(Graph graph, Vertex from, Vertex to) {
 
-    public float calculateDistance(Vertex origin, Vertex destination, Graph graph) {
-        Set<Vertex> set = new HashSet<>(graph.getGraph());
+        Set<Vertex> vertices = new HashSet<>(graph.getVertices());
 
-        for (Vertex vertex : set){
-            if(vertex != origin){
-                vertex.setCalculatedDistance(Float.MAX_VALUE);
-            } else {
-                vertex.setCalculatedDistance(0);
+        vertices.stream().filter(v -> v != from).forEach(v -> v.setCalculatedDistance(Float.MAX_VALUE));
+        from.setCalculatedDistance(0);
+
+        Queue<Vertex> queue = new PriorityQueue<>(vertices);
+
+        while (!queue.isEmpty()) {
+            Vertex current = queue.remove();
+            for (Edge e : current.getEdges()) {
+                Vertex next = e.otherVertex(current);
+                float distance = current.getCalculatedDistance() + e.getLength();
+                if (distance < next.getCalculatedDistance()) {
+                    next.setCalculatedDistance(distance);
+                    queue.remove(next);
+                    queue.add(next);
+                }
             }
-        }
-
-       /* set.stream().forEach(v ->v.setCalculatedDistance(Float.MAX_VALUE));
-        origin.setCalculatedDistance(0);*/
-
-        PriorityQueue<Vertex> priorityQueue = new PriorityQueue<>(graph.getGraph());
-
-        while(!priorityQueue.isEmpty()){
-            priorityQueue.remove();
 
         }
 
-
-
-
-
-       return 0;
+        if (to.getCalculatedDistance() == Float.MAX_VALUE) {
+            return Optional.empty();
+        }
+        else {
+            return Optional.of(to.getCalculatedDistance());
+        }
     }
 
 }

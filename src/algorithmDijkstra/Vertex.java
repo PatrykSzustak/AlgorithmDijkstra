@@ -5,43 +5,43 @@ import java.util.List;
 
 public class Vertex implements Comparable<Vertex> {
 
+        private final List<Edge> edges = new ArrayList<>();
+        private final String name;
+        private float calculatedDistance;
 
-    private final String cityName;
-    private final List<Edge> edges = new ArrayList<>();
-    private float calculatedDistance;
+        Vertex(String name) {
+            this.name = name;
+        }
 
-    public Vertex(String cityName) {
-        this.cityName = cityName;
-    }
+        List<Edge> getEdges() {
+            return edges;
+        }
 
-public void link (Vertex other, float value){
-        Edge edge = new Edge(this,other,value);
-        edges.add(edge);
-        other.edges.add(edge);
-}
+        public String getName() {
+            return name;
+        }
 
-    public List<Edge> getEdges() {
-        return edges;
-    }
+        float getCalculatedDistance() {
+            return calculatedDistance;
+        }
 
-    @Override
-    public String toString() {
-        return "Vertex{" +
-                "cityName='" + cityName + '\'' +
-                '}';
-    }
+        void setCalculatedDistance(float calculatedDistance) {
+            this.calculatedDistance = calculatedDistance;
+        }
 
-    public float getCalculatedDistance() {
-        return calculatedDistance;
-    }
+        void link(Vertex otherVertex, float value) {
+            Edge edge = new Edge(this, otherVertex, value);
+            edges.add(edge);
+            otherVertex.getEdges().add(edge);
+        }
 
-    public void setCalculatedDistance(float calculatedDistance) {
-        this.calculatedDistance = calculatedDistance;
-    }
+        @Override
+        public String toString() {
+            return name;
+        }
 
-    @Override
-    public int compareTo(Vertex o) {
-        return Float.compare(calculatedDistance, o.calculatedDistance);
-    }
-
+        @Override
+        public int compareTo(Vertex v) {
+            return Float.compare(calculatedDistance, v.getCalculatedDistance());
+        }
 }

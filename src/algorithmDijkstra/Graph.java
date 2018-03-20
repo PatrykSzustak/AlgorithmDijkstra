@@ -4,21 +4,13 @@ import java.util.List;
 
 public class Graph {
 
-private final List<Vertex> graph;
+    private final List<Vertex> vertices;
 
-    public Graph(List<Vertex> graph){
-
-        this.graph = graph;
+    public Graph(List<Vertex> vertices) {
+        this.vertices = vertices;
     }
 
-    public List<Vertex> getGraph() {
-        return graph;
-    }
-
-    @Override
-    public String toString() {
-        return "Graph{" +
-                "graph=" + graph +
-                '}';
+    public List<Vertex> getVertices() {
+        return vertices;
     }
 }

@@ -1,14 +1,12 @@
 package algorithmDijkstra;
 
 
-import java.util.HashSet;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 public class DijkstraAlgorithm {
 
- public Optional<Float> calculate(Graph graph, Vertex from, Vertex to) {
+
+    public Optional<Float> calculate(Graph graph, Vertex from, Vertex to) {
 
         Set<Vertex> vertices = new HashSet<>(graph.getVertices());
 

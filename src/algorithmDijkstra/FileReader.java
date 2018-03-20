@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileReader {
-    private String path = "/media/magda/518BF9B75CAB5A45/KursJava/Zajecia27/Cities/cities";
+    private String path = "/media/patryk/Cities/cities";
 
     public List<String> readFromFile() {
 

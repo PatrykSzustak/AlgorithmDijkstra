@@ -2,15 +2,14 @@ package algorithmDijkstra;
 
 import java.util.List;
 
-public class Graph {
-
+class Graph {
     private final List<Vertex> vertices;
 
-    public Graph(List<Vertex> vertices) {
+    Graph(List<Vertex> vertices) {
         this.vertices = vertices;
     }
 
-    public List<Vertex> getVertices() {
+    List<Vertex> getVertices() {
         return vertices;
     }
 }

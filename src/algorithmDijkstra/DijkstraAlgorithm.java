@@ -3,20 +3,15 @@ package algorithmDijkstra;
 
 import java.util.*;
 
-public class DijkstraAlgorithm {
+class DijkstraAlgorithm {
 
-
-    public Optional<Float> calculate(Graph graph, Vertex from, Vertex to) {
-
+    Optional<Float> calculate(Graph graph, Vertex from, Vertex to) {
         Set<Vertex> vertices = new HashSet<>(graph.getVertices());
-
         vertices.stream().filter(v -> v != from).forEach(v -> v.setCalculatedDistance(Float.MAX_VALUE));
         from.setCalculatedDistance(0);
-
         Queue<Vertex> queue = new PriorityQueue<>(vertices);
-
         while (!queue.isEmpty()) {
-            Vertex current = queue.remove();
+            Vertex current = queue.poll();
             for (Edge e : current.getEdges()) {
                 Vertex next = e.otherVertex(current);
                 float distance = current.getCalculatedDistance() + e.getLength();
@@ -26,15 +21,11 @@ public class DijkstraAlgorithm {
                     queue.add(next);
                 }
             }
-
         }
-
         if (to.getCalculatedDistance() == Float.MAX_VALUE) {
             return Optional.empty();
-        }
-        else {
+        } else {
             return Optional.of(to.getCalculatedDistance());
         }
     }
-
 }

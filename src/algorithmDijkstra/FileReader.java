@@ -6,19 +6,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileReader {
-    private String path = "/media/patryk/Cities/cities";
+class FileReader {
 
-    public List<String> readFromFile() {
-
+    List<String> readFromFile() {
         List<String> data = new ArrayList<>();
-
         try {
+            String path = "C:\\Users\\Goldz\\IdeaProjects\\AlgorithmDijkstra\\src\\Cities\\cities";
             data = Files.readAllLines(Paths.get(path));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return data;
     }
 }
